@@ -1,0 +1,5 @@
+# Ignore specific image files within the uploads folder
+/uploads/*.jpg
+/uploads/*.jpeg
+/uploads/*.png
+/uploads/*.gif
