@@ -11,14 +11,17 @@ class query{
         }
     }
 
-    public static function selectAll($table){
-        $sql = "SELECT * FROM ".$table; // Remove unnecessary quotes around $table
+    public static function selectAll($table, $data) {
+        $sql = "SELECT * FROM $table WHERE $data"; // Remove unnecessary quotes around $table
         $result = self::$conn->query($sql); // Use self::$conn to access the class property
+        //echo $sql;  
         if ($result === FALSE) {
             die('Query execution error: ' . self::$conn->error);
         }
+        
         return $result;
     }
+    
 
     public static function insert($table, $data){
         $columns = implode(", ", array_keys($data));
