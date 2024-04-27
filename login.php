@@ -1,5 +1,5 @@
 <?php 
-include ("registerquery.php");
+include ("loginquery.php");
 ?>
 <!doctype html>
 <html lang="en">
