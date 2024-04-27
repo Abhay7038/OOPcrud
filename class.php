@@ -3,9 +3,11 @@ class query{
     private static $conn; // Define $conn as a class property
 
     public static function DBconnect(){
-        self::$conn = new mysqli('localhost','root','','Yummy');
+        self::$conn = new mysqli('localhost','root','','OOPcrud');
         if(self::$conn->connect_error){
             die(''. self::$conn->connect_error);
+        }else{
+            // echo "Connected";
         }
     }
 
