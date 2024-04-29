@@ -18,27 +18,29 @@
             <thead class="table-light">
                 <tr>
                     <th>ID</th>
-                    <th>Image</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Image</th>
+                    <th>Password</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <?php foreach($row as $row){ ?>
+                <?php foreach($data as $data){ ?>
                 <tr
                     class="table-primary"
                 >
-                    <td scope="row"><?php echo $row['id']; ?></td>
-                    <td><img src="uploads/<?php echo $row['image']; ?>" alt="" srcset=""></td>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
+                    <td scope="row"><?php echo $data['ID']; ?></td>
+                    <td><?php echo $data['Name']; ?></td>
+                    <td><?php echo $data['Email']; ?></td>
+                    <td><img src="uploads/<?php echo $data['File']; ?>" alt="" srcset="" style="width:50px;"></td>
+                    <td><?php echo $data['Password']; ?></td>
                     <td>
                         <a
                         name=""
                         id=""
                         class="btn btn-primary"
-                        href="update.php?id=<?php echo $row['id']; ?>"
+                        href="update.php?id=<?php echo $data['ID']; ?>"
                         role="button"
                         >Edit</a
                         >
@@ -46,7 +48,7 @@
                         name=""
                         id=""
                         class="btn btn-primary"
-                        href="?del=<?php echo $row['id']; ?>"
+                        href="?del=<?php echo $data['ID']; ?>"
                         role="button"
                         >Delete</a
                         >
