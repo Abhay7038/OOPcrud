@@ -48,15 +48,18 @@ class query{
         return $result;
     }
 
-    public static function delete($table, $condition){
+    public static function delete($table, $condition, $headerfile){
         $sql = "DELETE FROM ".$table." WHERE ".$condition;
         // echo $sql;
         $result = self::$conn->query($sql);
         if ($result === FALSE) {
             die('Delete error: ' . self::$conn->error);
         }
-        return $result;
+        // Redirect to the specified header file before any output
+        header('Location: ' . $headerfile);
+        exit; // Make sure to exit after redirection
     }
+    
 }
 
 $db = new query();

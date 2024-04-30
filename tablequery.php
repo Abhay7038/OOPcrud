@@ -13,6 +13,6 @@ if(isset($_GET['del'])){
     // Construct WHERE clause for deletion
     $where_clause = "ID=$id";
     // Call the delete method
-    query::delete('User', $where_clause);
+    query::delete('User', $where_clause,'table.php');
 }
 ?>
