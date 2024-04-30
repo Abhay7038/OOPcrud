@@ -1,6 +1,5 @@
 <?php
 include("class.php");
-query::DBconnect();
 
 // Validate and sanitize user input
 $name = isset($_POST['name']) ? $_POST['name'] : '';

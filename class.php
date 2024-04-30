@@ -2,7 +2,7 @@
 class query{
     private static $conn; // Define $conn as a class property
 
-    public static function DBconnect(){
+    public function __construct(){
         self::$conn = new mysqli('localhost','root','','OOPcrud');
         if(self::$conn->connect_error){
             die(''. self::$conn->connect_error);
@@ -57,5 +57,44 @@ class query{
         }
         return $result;
     }
+}
+
+$db = new query();
+
+class validation extends query{
+
+    public static function imageupload($table, $data, $headerfile) {
+        // Define the target directory
+        $targetdir = 'uploads/';
+    
+        // Check if the file has been uploaded
+        if ($_FILES['file']['size'] > 0) {
+            // Check if the target directory exists, create it if not
+            if (!file_exists($targetdir)) {
+                mkdir($targetdir, 0777, true); // Recursive directory creation
+            }
+    
+            $targetfile = $targetdir . $_FILES['file']['name'];
+    
+            // Handle filename collision
+            if (file_exists($targetfile)) {
+                echo "File already exists.";
+            } else {
+                // Attempt to move the uploaded file to the target directory
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $targetfile)) {
+                    // Insert data into the database
+                    query::insert($table, $data);
+                    // Redirect to the specified header file
+                    header('Location: ' . $headerfile);
+                    exit;
+                } else {
+                    echo "Image not uploaded.";
+                }
+            }
+        } else {
+            echo "Not a file.";
+        }
+    }
+    
 }
 ?>

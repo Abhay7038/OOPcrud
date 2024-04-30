@@ -1,6 +1,5 @@
 <?php
 include("class.php");
-query::DBconnect();
 $result = query::selectAll('User', '1');
 $userdata = array(); // Initialize an array to store fetched data
 if ($result->num_rows > 0) {
