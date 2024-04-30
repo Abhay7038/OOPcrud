@@ -50,6 +50,7 @@ class query{
 
     public static function delete($table, $condition){
         $sql = "DELETE FROM ".$table." WHERE ".$condition;
+        // echo $sql;
         $result = self::$conn->query($sql);
         if ($result === FALSE) {
             die('Delete error: ' . self::$conn->error);
